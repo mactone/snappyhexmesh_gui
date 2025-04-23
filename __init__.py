@@ -19,9 +19,9 @@
 # <pep8 compliant>
 
 bl_info = {
-    "name": "SnappyHexMesh GUI",
-    "author": "Tuomo Keskitalo",
-    "version": (1, 8),
+    "name": "SnappyHexMesh GUI-mactone",
+    "author": "Orig: Tuomo Keskitalo Modification: mactone hsieh",
+    "version": (1, 9),
     "blender": (2, 80, 0),
     "location": "3D View > SnappyHexMesh GUI",
     "description": "GUI for OpenFOAM SnappyHexMesh volume mesh generation tool",
