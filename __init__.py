@@ -339,7 +339,7 @@ bpy.types.Object.shmg_cell_zone_type = bpy.props.EnumProperty(
     default='none'
 )
 
-bpy.types.Object.shmg_cell_zone_type = bpy.props.EnumProperty(
+bpy.types.Object.shmg_volume_type_gapmode = bpy.props.EnumProperty(
     name="gapMode",
     description="set the gapMode inside volume refinement (Optional)",
     items={
