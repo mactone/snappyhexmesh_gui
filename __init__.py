@@ -275,6 +275,19 @@ bpy.types.Object.shmg_surface_max_level = bpy.props.IntProperty(
     description="Maximum Cell Refinement Level for Surface",
     default=0, min=0, max=10,
 )
+
+bpy.types.Object.shmg_volume_refinement_gaplevels_min_level = bpy.props.IntProperty(
+    name="Minimum Surface Refinement Level",
+    description="Minimum Cell Refinement Level for Surface",
+    default=0, min=0, max=10,
+)
+
+bpy.types.Object.shmg_volume_refinement_gaplevels_max_level = bpy.props.IntProperty(
+    name="Minimum Surface Refinement Level",
+    description="Minimum Cell Refinement Level for Surface",
+    default=0, min=0, max=10,
+)
+
 bpy.types.Object.shmg_feature_edge_level = bpy.props.IntProperty(
     name="Feature Edge Refinement Level",
     description="Feature Edge (Sharp Edge) Refinement Level for Surface",
@@ -325,6 +338,17 @@ bpy.types.Object.shmg_cell_zone_type = bpy.props.EnumProperty(
         ('outside', 'outside', 'Create Zone Outside of Enclosed Volume', 2)},
     default='none'
 )
+
+bpy.types.Object.shmg_cell_zone_type = bpy.props.EnumProperty(
+    name="gapMode",
+    description="set the gapMode inside volume refinement (Optional)",
+    items={
+        ('none', 'none', 'None', 0),
+        ('inside', 'inside', 'gap inside the volume', 1),
+        ('outside', 'outside', 'gap outside the volume', 2)},
+    default='none'
+) # mactone
+
 bpy.types.Object.shmg_volume_level = bpy.props.IntProperty(
     name="Volume Refinement Level",
     description="Cell Refinement Level for Volume",
@@ -656,6 +680,17 @@ class VIEW3D_PT_SnappyHexMeshGUI_Object_Object(bpy.types.Panel, SnappyHexMeshGUI
         rowsub = col.row()
         rowsub.alignment = 'RIGHT'
         rowsub.prop(obj, "shmg_volume_type", text="Volume Refinement")
+        rowsub = col.row()
+        rowsub.alignment = 'RIGHT'
+        rowsub.prop(obj, "shmg_volume_type_gapmode", text="gapMode")
+        rowsub = col.row()
+        rowsub.alignment = 'RIGHT'
+        rowsub = col.row()
+        rowsub.label(text="gapLevels:")
+        rowsub = col.row()
+        rowsub.prop(obj, "shmg_volume_type_gaplevels_min_level", text="Min")
+        rowsub.prop(obj, "shmg_volume_type_gaplevels_max_level", text="Max")
+        
         if obj.shmg_volume_type != "none":
             rowsub = col.row()
             rowsub.prop(obj, "shmg_volume_level", text="Volume Refinement Level")
