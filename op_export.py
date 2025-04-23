@@ -628,6 +628,13 @@ def export_refinement_volumes():
              + "            levels ((" + str(i.shmg_volume_level) \
              + " " + str(i.shmg_volume_level) + "));\n" \
              + "        }\n"
+	if i.shmg_volume_type_gapmode == 'none':
+		continue
+
+	d += "            gapMode " + str(i.shmg_volume_type_gapmode) + ";\n" \
+             + "            levels ((" + str(i.shmg_volume_type_gapmode_min_level) \
+	     + "            levels ((" + str(i.shmg_volume_type_gapmode_max_level) \
+	    + "        }\n"
     return d
 
 def get_face_zone_definitions(obj):
@@ -1049,6 +1056,9 @@ def copy_settings_to_objects():
         ob.shmg_cell_zone_type = a.shmg_cell_zone_type
         ob.shmg_volume_level = a.shmg_volume_level
         ob.shmg_volume_type = a.shmg_volume_type
+	ob.shmg_volume_type_gapmode = a.shmg_volume_type_gapmode
+	ob.shmg_volume_type_gaplevels_min_level = a.shmg_volume_type_gaplevels_min_level
+	ob.shmg_volume_type_gaplevels_max_level = a.shmg_volume_type_gaplevels_max_level
         ob.shmg_specify_object_layer_properties = a.shmg_specify_object_layer_properties
         ob.shmg_obj_surface_layer_expansion_ratio = a.shmg_obj_surface_layer_expansion_ratio
         ob.shmg_obj_surface_layer_final_thickness = a.shmg_obj_surface_layer_final_thickness
